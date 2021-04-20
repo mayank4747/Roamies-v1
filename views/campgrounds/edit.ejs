@@ -1,0 +1,130 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Campground </title>
+</head>
+<body> -->
+
+
+
+    <% layout('./layout/boilerplate') %> 
+    <h1 class="text-center"> Edit Campground</h1>
+    <section>
+        <form method="POST" action="/campgrounds/<%=camp.id%>?_method=PUT" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="row">
+             <div class="col-6 offset-3">
+               
+               <div class="mb-3 mt-5">
+                   <label for="title" class="form-label">Title</label>
+                   <input type="text" value="<%= camp.title %>" placeholder="Title" class="form-control" id="title" name="Campground[title]" required aria-describedby="emailHelp">
+                   <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please choose a title.
+                  </div>
+                   <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                 </div>
+                 <div class="mb-3">
+                   <label for="location" class="form-label">Location</label>
+                   <input type="text" class="form-control" placeholder="Location" id="location" required value="<%= camp.location %>" name="Campground[location]">
+                   <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                   Location is required !
+                  </div>
+                 </div>
+                 <label for="basic-url" class="form-label">Price</label>
+                     <div class="input-group mb-3">
+                   <span class="input-group-text" id="basic-addon3">$</span>
+                      <input type="number" step="0.02"  value="0.01" placeholder="0.00" required name="Campground[price]" value="<%= camp.price %> class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        please put a price 
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                       <label for="image" class="form-label">Add Images</label>
+                       <input type="file" class="form-control"   id="image" name="image" multiple >
+                       <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        Atleast one image is required !
+                      </div>
+                     </div>
+                     <div class="mb-3">
+                       <% camp.image.forEach(function(img,i){ %>
+                        <img src="<%=img.thumbnail%>" class="img-thumbnail">
+                        <div class="form-check-inline">
+                          <input type="checkbox" id="image<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                          <label class="form-check-label" for="image<%=i%>">Delete</label>
+                        </div>
+                        <% }) %>  
+                     </div>
+                    <div class="form-floating mb-5 mt-3">
+                       <textarea class="form-control" name="Campground[description]" required value="<%= camp.description %> placeholder="Describe here ......" id="floatingTextarea"><%= camp.description %> </textarea>
+                       <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        Describe it bro !
+                       </div>
+                       <label for="floatingTextarea">Description</label>
+                     </div>
+                 <button type="submit" class="btn btn-primary text-center">Update Camp </button>
+            </div>
+           </div>
+       </form>
+
+
+
+
+<!-- <form method="POST" action="/campgrounds/<%=camp.id%>?_method=PUT">
+    <label for="ti" >Title</label>
+    <input type="text" placeholder="Title" name="Campground[title]" id="ti" value="<%= camp.title %> ">
+    <label for="ds" >Description</label>
+    <input type="text" placeholder="Description" name="Campground[description]" id="ds" value="<%= camp.description %>" >
+    
+    <label for="pr" >Price</label>
+     <input type="number" placeholder="Price" step="0.02" id="pr" value="0.01" name="Campground[price]" value="<%= camp.price %> " >  <!-- STRANGE IN NAME IS NOTICED  -->
+    <!-- <label for="lo" >Location</label>
+    <input type="text" placeholder="Location" name="Campground[location]" id="lo" value="<%= camp.location %> ">
+    
+    <button>Submit</button>
+</form> --> 
+
+    </section>
+<!-- </body>
+</html> -->
+
+
+
+
+<script>
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>

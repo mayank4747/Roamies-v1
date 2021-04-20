@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Campground </title>
+</head>
+<body> -->
+    <% layout('./layout/boilerplate') %> 
+    <h1 class="text-center"> Add New Campground</h1>
+    <form method="POST" action="/campgrounds" novalidate class="validated-form" enctype="multipart/form-data">
+     <div class="row">
+      <div class="col-6 offset-3">
+        
+        <div class="mb-3 mt-5">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" placeholder="Title" class="form-control" id="title" name="Campground[title]" aria-describedby="emailHelp" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please choose a title.
+            </div>
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" placeholder="Location" id="location" name="Campground[location]" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+             Location is required !
+            </div>
+          </div>
+          <label for="basic-url" class="form-label">Price</label>
+              <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">$</span>
+               <input type="text" placeholder="0.00"  step="0.02"  value="0.01" name="Campground[price]" class="form-control" id="basic-url" required aria-describedby="basic-addon3">
+               <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                please put a price 
+              </div>
+             </div>
+             <!-- <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" class="form-control" placeholder="Image URL" id="image" name="Campground[image]" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                 Image URL is required !
+                </div>
+              </div> -->
+              <div class="mb-3">
+                <label for="image" class="form-label">Add Images</label>
+                <input type="file" class="form-control"  required id="image" name="image" multiple >
+                <div class="valid-feedback">
+                 Looks good!
+               </div>
+               <div class="invalid-feedback">
+                 Atleast one image is required !
+               </div>
+              </div>
+             <div class="form-floating mb-5 mt-3">
+                <textarea class="form-control" name="Campground[description]" required placeholder="Describe here ......" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">Description</label>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback">
+                  Describe it bro !
+                 </div>
+              </div>
+          <button type="submit" class="btn btn-primary text-center">Submit</button>
+     </div>
+    </div>
+</form>
+
+   
+
+
+<!-- <form method="POST" action="/campgrounds">
+    <label for="ti" >Title</label>
+    <input type="text" placeholder="Title" name="Campground[title]" id="ti">
+    <label for="ds" >Description</label>
+    <input type="text" placeholder="Description" name="Campground[description]" id="ds">
+    
+    <label for="pr" >Price</label>
+     <input type="number" placeholder="Price" step="0.02" id="pr" value="0.01" name="Campground[price]">  <!-- STRANGE IN NAME IS NOTICED  -->
+    <!-- <label for="lo" >Location</label>
+    <input type="text" placeholder="Location" name="Campground[location]" id="lo">
+    
+    <button>Submit</button>
+</form> -->
+
+    
+<!-- </body>
+</html> -->
+
+
+
